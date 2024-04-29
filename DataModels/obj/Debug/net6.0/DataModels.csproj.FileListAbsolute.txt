@@ -1,0 +1,11 @@
+D:\BLAZOR\StaffManagement\DataModels\bin\Debug\net6.0\DataModels.deps.json
+D:\BLAZOR\StaffManagement\DataModels\bin\Debug\net6.0\DataModels.dll
+D:\BLAZOR\StaffManagement\DataModels\bin\Debug\net6.0\DataModels.pdb
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.GeneratedMSBuildEditorConfig.editorconfig
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.AssemblyInfoInputs.cache
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.AssemblyInfo.cs
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.csproj.CoreCompileInputs.cache
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.dll
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\refint\DataModels.dll
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\DataModels.pdb
+D:\BLAZOR\StaffManagement\DataModels\obj\Debug\net6.0\ref\DataModels.dll

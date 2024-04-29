@@ -1,0 +1,145 @@
+﻿@page "/staff"
+@inject IConfiguration Configuration
+@inject IJSRuntime JS
+
+@inject Microsoft.JSInterop.IJSRuntime JS
+
+
+<ConfirmDialog @ref="dialog" />
+
+<div class="row">
+    <div class="col-md-3">
+        <h3 style="color:#07559D">Staff Information</h3>
+
+    </div>
+    <div class="col-md-9" style="text-align:right">
+        <Button @ref="saveButton4" Color="ButtonColor.Success" Size="Size.Small" @onclick="OnDownload">
+            <Icon Name="IconName.FileEarmarkExcel"></Icon>
+            Excel Download
+        </Button>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <div class="form-group col-md-1">
+        <label for="_">ID</label>
+        <input type="text"  @bind="@SearchID" class="form-control">
+    </div>
+    <div class=" form-group col-md-2" style="padding-bottom:10px">
+        <label for="_">Gender</label>
+        <select @bind=@SearchGender class="form-control">
+            <option selected value="0">== ALL ==</option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+        </select>
+
+        
+    </div>
+    <div class="form-group col-md-2">
+        <label for="_">DOB-Start</label>
+        @* <input type="text" id="TemplateName" @bind="@StaffModel.DOB" class="form-control"> *@
+        <DateInput Style="padding-left:6px;padding-right:6px" TValue="DateTime?" @bind-Value="@StartDate"/>
+    </div>
+    <div class="form-group col-md-2">
+        <label for="_">DOB-End</label>
+        @* <input type="text" id="TemplateName" @bind="@StaffModel.DOB" class="form-control"> *@
+        <DateInput Style="padding-left:6px;padding-right:6px" TValue="DateTime?" @bind-Value="@EndDate" />
+    </div>
+    <div class="col-md-2" style="padding-bottom:10px">
+        <br />
+        <Button Color="ButtonColor.Primary" @onclick=@LoadData> <Icon Name="IconName.Search" /> Search </Button>
+    </div>
+
+    <div class="col-md-3" style="padding-bottom:10px;text-align:right">
+        <br />
+        <Button Color="ButtonColor.Success" @onclick="OnNew"> <Icon Name="IconName.PlusSquare" /> New</Button>
+    </div>
+</div>
+@if (StaffModelList == null)
+{
+    <h3>Please wait, Loading the data.</h3>
+}
+else
+{
+    <table class="table table-bordered table-striped table-hover">
+        <thead style="text-align:center;background-color:#1b6ec2;color:white">
+            <tr>
+                <th>ID</th>
+                <th>FullName</th>
+                <th>Gender</th>
+                <th>Date of Birth</th>
+                <th>Create Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody style="text-align:center">
+            @if(StaffModelList.Count != 0)
+            {
+                @foreach (var staff in StaffModelList)
+                {
+                    <tr>
+                        <td>@staff.ID</td>
+                        <td>@staff.FULLNAME</td>
+                        <td>@(staff.GENDER == 1 ? "Male" : "Female")</td>
+                        <td>@staff.DOB.ToString("dd-MMM-yyyy")</td>
+                        <td>@staff.CREATE_DATE</td>
+                        <td align="center">
+                            <Button Color="ButtonColor.Dark" Outline="true" @onclick="()=> OnEdit(staff.ID)" Size="Size.Small"> <Icon Name="IconName.Pencil" />  Edit </Button>
+                            <Button Color="ButtonColor.Danger" Outline="true" @onclick="()=> OnDelete(staff.ID)" Size="Size.Small"> <Icon Name="IconName.Trash" />  Delete </Button>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                 <tr>
+                    <td>no data</td>
+                 </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+<Modal @ref="modalEdit" Title="Staff Information" UseStaticBackdrop="true" ShowCloseButton="false" Size="ModalSize.Large">
+    <BodyTemplate>
+        <div class="row">
+            <div class="form-group col-md-1">
+                <label for="_">ID</label>
+                <input readonly="true" type="text" @bind="@StaffModel.ID" class="form-control">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="_">FullName</label>
+                <input type="text" @bind="@StaffModel.FULLNAME" class="form-control">
+            </div>
+            <div class="form-group col-md-2">
+                <label for="_">Gender</label>
+                <select @bind="StaffModel.GENDER" class="form-control">
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                </select>
+             
+            </div>
+            <div class="form-group col-md-3">
+                <label for="_">Date of Birth</label>
+                @* <input type="text" id="TemplateName" @bind="@StaffModel.DOB" class="form-control"> *@
+                <DateInput TValue="DateTime" @bind-Value="@StaffModel.DOB" Placeholder="Enter Date" />
+            </div>
+        </div>
+    </BodyTemplate>
+    <FooterTemplate>
+        <Button Color="ButtonColor.Danger" Outline="true" @onclick="OnHideModalClick"><Icon Name="IconName.XCircle" /> Close </Button>
+        <Button Color="ButtonColor.Success" Outline="true" @onclick="OnSave">  <Icon Name="IconName.FileEarmarkText" /> Save </Button>
+    </FooterTemplate>
+</Modal>
+
+
+<style>
+    label {
+        color: #07559D;
+    }
+</style>
+
+

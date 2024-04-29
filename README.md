@@ -1,10 +1,10 @@
 # StaffManagement
 
 1. Clone project : git clone https://github.com/Kongkimmeng/StaffManagement.git
-2. Open with Microsoft Visual Studio:
-   2.1 API : Connect to Sql Server Config : ![image](https://github.com/Kongkimmeng/StaffManagement/assets/144108306/2b736663-6439-412a-9ec0-be4bcaede41a)
-   2.2 Model: StaffModel
-   2.3 StaffManagement: FrontEnd Blazor Server
+2. Open with Microsoft Visual Studio:  <br />
+   2.1 API : Connect to Sql Server Config : ![image](https://github.com/Kongkimmeng/StaffManagement/assets/144108306/2b736663-6439-412a-9ec0-be4bcaede41a)  <br />
+   2.2 Model: StaffModel   <br />
+   2.3 StaffManagement: FrontEnd Blazor Server  <br />
 3. SQL server run the script:
    3.1 create DB name "TBL_STAFF"
    3.2 run the script "sqlScript.text"
